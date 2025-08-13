@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Time Allocation Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: #bbd1f1;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .time-guide-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #3a0ca3;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .duration-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        label {
+            font-weight: 600;
+            color: #3a0ca3;
+        }
+        
+        #hourSelect {
+            padding: 0.7rem 1rem;
+            border: 2px solid #3a0ca3;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: white;
+            min-width: 150px;
+        }
+        
+        #selectedHours {
+            font-weight: bold;
+            color: #3a0ca3;
+            margin-left: auto;
+        }
+        
+        .plan {
+            display: none;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .time-card {
+            background: #e5f0b5;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border-top: 4px solid #ece037;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(147, 34, 34, 0.05);
+        }
+        
+        .time-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .percent {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #3a1296;
+            margin-bottom: 0.5rem;
+        }
+        
+        .type {
+            font-weight: 600;
+            color: #e88230;
+            margin: 0.7rem 0;
+            font-size: 1.1rem;
+        }
+        
+        .duration {
+            color: #282727;
+            font-size: 1rem;
+            background: #b1c879;
+            padding: 0.3rem;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 768px) {
+            .duration-selector {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            #selectedHours {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+            
+            .plan {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .subject-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 1rem;
+        }
+        
+        .subject-tab {
+            padding: 0.7rem 1.5rem;
+            background: #f0f4f8;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .subject-tab.active {
+            background: #391294;
+            color: rgb(252, 246, 251);
+        }
+    </style>
+</head>
+<body>
+    <div class="time-guide-container">
+        <h1>Smart Time Allocation Guide</h1>
+        
+        <div class="subject-tabs">
+            <div class="subject-tab active">General</div>
+            <div class="subject-tab">Mathematics</div>
+            <div class="subject-tab">Science</div>
+        </div>
+        
+        <div class="duration-selector">
+            <label for="hourSelect">Select Study Duration:</label>
+            <select id="hourSelect" onchange="showPlan()">
+                <option value="0">Choose hours</option>
+                <option value="1">1 hour</option>
+                <option value="2">2 hours</option>
+                <option value="3">3 hours</option>
+                <option value="5">5 hours</option>
+                <option value="8">8 hours</option>
+                <option value="12">12 hours</option>
+            </select>
+            <span id="selectedHours">0 hours selected</span>
+        </div>
+        
+        <!-- General Study Plan -->
+        <div class="plan" id="plan1">
+            <div class="time-card">
+                <div class="percent">30%</div>
+                <div class="type">Quick Review</div>
+                <div class="duration">20 min</div>
+            </div>
+            <div class="time-card">
+                <div class="percent">50%</div>
+                <div class="type">Practice</div>
+                <div class="duration">30 min</div>
+            </div>
+            <div class="time-card">
+                <div class="percent">20%</div>
+                <div class="type">Self-Test</div>
+                <div class="duration">10 min</div>
+            </div>
+        </div>
+        
+        <div class="plan" id="plan2">
+            <div class="time-card">
+                <div class="percent">25%</div>
+                <div class="type">Theory</div>
+                <div class="duration">30 min</div>
+            </div>
+            <div class="time-card">
+                <div class="percent">40%</div>
+                <div class="type">Problems</div>
+                <div class="duration">50 min</div>
+            </div>
+            <div class="time-card">
+                <div class="percent">25%</div>
+                <div class="type">Revision</div>
+                <div class="duration">30 min</div>
+            </div>
+            <div class="time-card">
+                <div class="percent">10%</div>
+                <div class="type">Break</div>
+                <div class="duration">10 min</div>
+            </div>
+        </div>
+        
+        <div class="plan" id="plan3">
+            <div class="time-card">
+                <div class="percent">20%</div>
+                <div class="type">Concepts</div>
+                <div class="duration">35 min</div>
+            </div>
+            <div class="time-card">
+                <div class="percent">35%</div>
+                <div class="type">Drills</div>
+                <div class="duration">1 hr 05 min</div>
+            </div>
+            <div class="time-card">
+                <div class="percent">30%</div>
+                <div class="type">Mock Test</div>
+                <div class="duration">55 min</div>
+            </div>
+            <div class="time-card">
+                <div class="percent">15%</div>
+                <div class="type">Breaks</div>
+                <div class="duration">25 min</div>
+            </div>
+        </div>
+        
+        <div class="plan" id="plan5">
+            <div class="time-card">
+                <div class="percent">15%</div>
+                <div class="type">Basics</div>
+                <div class="duration">45 min</div>
+            </div>
+            <div class="time-card">
+                <div class="percent">25%</div>
+                <div class="type">Core Theory</div>
+                <div class="duration">1 hr 15 min</div>
+            </div>
+            <div class="time-card">
+                <div class="percent">35%</div>
+                <div class="type">Practice</div>
+                <div class="duration">1 hr 45 min</div>
+            </div>
+            <div class="time-card">
+                <div class="percent">20%</div>
+                <div class="type">Full Test</div>
+                <div class="duration">1 hr</div>
+            </div>
+            <div class="time-card">
+                <div class="percent">5%</div>
+                <div class="type">Breaks</div>
+                <div class="duration">15 min</div>
+            </div>
+        </div>
+        
+        <div class="plan" id="plan8">
+            <div class="time-card">
+                <div class="percent">10%</div>
+                <div class="type">Warm-up</div>
+                <div class="duration">50 min</div>
+            </div>
+            <div class="time-card">
+                <div class="percent">20%</div>
+                <div class="type">Deep Study</div>
+                <div class="duration">1 hr 35 min</div>
+            </div>
+            <div class="time-card">
+                <div class="percent">30%</div>
+                <div class="type">Problems</div>
+                <div class="duration">2 hr 25 min</div>
+            </div>
+            <div class="time-card">
+                <div class="percent">25%</div>
+                <div class="type">Exams</div>
+                <div class="duration">2 hr</div>
+            </div>
+            <div class="time-card">
+                <div class="percent">10%</div>
+                <div class="type">Review</div>
+                <div class="duration">50 min</div>
+            </div>
+            <div class="time-card">
+                <div class="percent">5%</div>
+                <div class="type">Breaks</div>
+                <div class="duration">25 min</div>
+            </div>
+        </div>
+        
+        <div class="plan" id="plan12">
+            <div class="time-card">
+                <div class="percent">5%</div>
+                <div class="type">Planning</div>
+                <div class="duration">35 min</div>
+            </div>
+            <div class="time-card">
+                <div class="percent">15%</div>
+                <div class="type">Theory</div>
+                <div class="duration">1 hr 45 min</div>
+            </div>
+            <div class="time-card">
+                <div class="percent">25%</div>
+                <div class="type">Practice</div>
+                <div class="duration">3 hr</div>
+            </div>
+            <div class="time-card">
+                <div class="percent">30%</div>
+                <div class="type">Mock Tests</div>
+                <div class="duration">3 hr 35 min</div>
+            </div>
+            <div class="time-card">
+                <div class="percent">15%</div>
+                <div class="type">Analysis</div>
+                <div class="duration">1 hr 45 min</div>
+            </div>
+            <div class="time-card">
+                <div class="percent">7%</div>
+                <div class="type">Breaks</div>
+                <div class="duration">50 min</div>
+            </div>
+            <div class="time-card">
+                <div class="percent">3%</div>
+                <div class="type">Buffer</div>
+                <div class="duration">20 min</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPlan() {
+            // Hide all plans first
+            document.querySelectorAll('.plan').forEach(plan => {
+                plan.style.display = 'none';
+            });
+            
+            const hours = document.getElementById('hourSelect').value;
+            document.getElementById('selectedHours').textContent = hours + (hours === '1' ? ' hour' : ' hours') + ' selected';
+            
+            // Show selected plan
+            if (hours !== '0') {
+                const planId = 'plan' + hours;
+                if (document.getElementById(planId)) {
+                    document.getElementById(planId).style.display = 'grid';
+                }
+            }
+        }
+        
+        // Tab switching functionality
+        document.querySelectorAll('.subject-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.subject-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                // You can add subject-specific content loading here later
+            });
+        });
+    </script>
+</body>
+</html>

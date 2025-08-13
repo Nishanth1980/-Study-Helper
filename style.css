@@ -1,0 +1,601 @@
+/* Modern Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Color Themes */
+:root {
+    /* Base */
+    --text-light: #a8bcd0;
+    --text-dark: #212529;
+    
+    /* Home */
+    --home-primary: #273266;
+    --home-secondary: #3a0ca3;
+    
+    /* Math */
+    --math-primary: #f72585;
+    --math-secondary: #b5179e;
+    
+    /* Science */
+    --science-primary: #4cc9f0;
+    --science-secondary: #4895ef;
+}
+
+/* Base Styles */
+body {
+    background: #d5dce3;
+    color: var(--text-dark);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Theme Colors */
+body.home {
+    --primary: var(--home-primary);
+    --secondary: var(--home-secondary);
+}
+
+body.math {
+    --primary: var(--math-primary);
+    --secondary: var(--math-secondary);
+}
+
+body.science {
+    --primary: var(--science-primary);
+    --secondary: var(--science-secondary);
+}
+
+/* Header */
+header {
+    background: var(--primary);
+    color: rgb(235, 219, 219);
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+nav a {
+    color: rgb(249, 249, 249);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+nav a.active, nav a:hover {
+    background: var(--secondary);
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    flex: 1;
+}
+
+/* Motivation Section */
+.motivation {
+    background: rgb(218, 193, 193);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+blockquote {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+}
+
+cite {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Study Tracker */
+.study-tracker {
+    background: rgb(203, 188, 222);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.subject-slider {
+    margin: 1rem 0;
+}
+
+.subject-slider label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.subject-slider input[type="range"] {
+    width: 100%;
+    height: 10px;
+    -webkit-appearance: none;
+    background: #e9ecef;
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 0.5rem;
+}
+
+.subject-slider input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--primary);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.subject-slider output {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: var(--primary);
+    color: white;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+/* Subject Previews */
+.subject-previews {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.subject-previews a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 2rem;
+    border-radius: 8px;
+    transition: transform 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.subject-previews a:hover {
+    transform: translateY(-5px);
+}
+
+.math-preview {
+    background: linear-gradient(135deg, #f72585 0%, #b5179e 100%);
+    color: white;
+}
+
+.science-preview {
+    background: linear-gradient(135deg, #40bbe1 0%, #4274ad 100%);
+    color: white;
+}
+
+.subject-previews h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* =====================
+   TIME ALLOCATION CARDS
+   ===================== */
+.time-guide-cards {
+    background: rgb(213, 211, 97);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.time-guide-cards h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.guide-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+.guide-card {
+    background: #e3e3e4;
+    border-radius: 8px;
+    padding: 1.25rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border-top: 4px solid transparent;
+}
+
+.guide-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.guide-percent {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.guide-desc {
+    font-size: 1rem;
+    color: var(--text-dark);
+    margin-bottom: 0.25rem;
+}
+
+.guide-time {
+    font-size: 0.85rem;
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+/* Color Coding */
+.guide-card.time-25 { border-color: #FF9800; }
+.guide-card.time-50 { border-color: #2196F3; }
+.guide-card.time-75 { border-color: #673AB7; }
+.guide-card.time-100 { border-color: #4CAF50; }
+
+.guide-card.time-25 .guide-percent { color: #FF9800; }
+.guide-card.time-50 .guide-percent { color: #2196F3; }
+.guide-card.time-75 .guide-percent { color: #673AB7; }
+.guide-card.time-100 .guide-percent { color: #4CAF50; }
+.subject-previews p {
+    position: relative;
+    z-index: 1;
+}
+
+.subject-previews .symbol {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+/* Formulas Section */
+.formulas {
+    margin-top: 2rem;
+}
+
+.formula-category {
+    margin-bottom: 2rem;
+}
+
+.formula-category h2 {
+    color: var(--primary);
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e9ecef;
+    margin-bottom: 1rem;
+}
+
+.formula-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-left: 4px solid var(--primary);
+}
+
+.formula-card h3 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.formula {
+    font-family: monospace;
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: var(--text-dark);
+}
+
+.example {
+    background: #fcfdfd;
+    padding: 0.8rem;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--primary);
+    color: rgb(220, 177, 177);
+    margin-top: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .subject-previews {
+        grid-template-columns: 1fr;
+
+
+    }
+
+}
+/* Study Log Section */
+.study-log {
+    margin: 2rem 0;
+}
+
+.log-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.log-time {
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.time-input {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100px;
+}
+
+.task-list {
+    list-style: none;
+}
+
+.task-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.add-task {
+    padding: 0.5rem;
+    border: 1px dashed #ccc;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+/* Motivation Trigger */
+.get-set-go {
+  display: block;
+  background: #4CAF50;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 2rem 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+}
+
+.get-set-go:hover {
+  background: #3e8e41;
+  transform: translateY(-3px);
+}
+
+.hidden-toggle {
+  display: none;
+}
+
+/* Hidden by default */
+.motivation-cards {
+  display: none;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Show cards when checkbox is checked */
+.hidden-toggle:checked ~ .motivation-cards {
+  display: grid;
+}
+
+.tip-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-left: 5px solid #4CAF50;
+}
+
+.break-hint {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background: #FFF9C4;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+/* Time Selection */
+.hour-select {
+    padding: 0.5rem;
+    border: 2px solid var(--primary);
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+/* Hide all task groups by default */
+.task-group {
+    display: none;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+/* Show tasks based on selected hours */
+.hour-select option[value="1"]:checked ~ .task-list [data-hours-needed="1"],
+.hour-select option[value="3"]:checked ~ .task-list [data-hours-needed="3"] {
+    display: block;
+}
+
+/* Colorful checked items */
+input[type="checkbox"]:checked + label {
+    color: #4CAF50;
+    text-decoration: line-through;
+}
+/* Study Plan Styles */
+.time-selector {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.hour-select {
+  padding: 0.5rem;
+  border: 2px solid var(--primary);
+  border-radius: 5px;
+  margin: 0 10px;
+}
+
+.task-lists {
+  margin-top: 1rem;
+}
+
+/* Hide all task groups by default */
+.task-group {
+  display: none;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Show only the selected plan */
+.hour-select option[value="1"]:checked ~ .task-lists [data-hours="1"],
+.hour-select option[value="3"]:checked ~ .task-lists [data-hours="3"], 
+.hour-select option[value="5"]:checked ~ .task-lists [data-hours="5"],
+.hour-select option[value="8"]:checked ~ .task-lists [data-hours="8"] {
+  display: block;
+}
+
+.task-group h4 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.task-group ul {
+  list-style: none;
+}
+
+.task-group li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.task-group li:last-child {
+  border-bottom: none;
+}
+.time-allocation {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  margin: 2rem 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.duration-picker {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.duration-select {
+  padding: 0.7rem;
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.allocation-cards {
+  display: none;
+}
+
+.duration-plan {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.time-card {
+  background: #f8fafc;
+  padding: 1.2rem;
+  border-radius: 8px;
+  text-align: center;
+  border-top: 4px solid var(--primary);
+  transition: transform 0.3s;
+}
+
+.time-card:hover {
+  transform: translateY(-5px);
+}
+
+.percent {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.type {
+  font-weight: 600;
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+.duration {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Show selected plan */
+.duration-select option[value="1"]:checked ~ .allocation-cards [data-hours="1"],
+.duration-select option[value="3"]:checked ~ .allocation-cards [data-hours="3"],
+.duration-select option[value="5"]:checked ~ .allocation-cards [data-hours="5"],
+.duration-select option[value="8"]:checked ~ .allocation-cards [data-hours="8"],
+.duration-select option[value="12"]:checked ~ .allocation-cards [data-hours="12"] {
+  display: block;
+}

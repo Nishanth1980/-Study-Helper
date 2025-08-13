@@ -85,6 +85,55 @@
             color: #4CAF50;
         }
 
+        /* MAKE TIME FOR YOURSELF SECTION */
+        .time-planner-front {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .time-planner-front h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .time-planner-front p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .time-planner-link {
+            margin-top: 1.5rem;
+        }
+
+        .planner-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .planner-button:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .planner-button .icon {
+            font-size: 1.2rem;
+        }
+
         /* Subject Page Enhancements */
         .chapter {
             background: white;
@@ -170,7 +219,23 @@
                 </details>
             </div>
         </section>
-        
+
+      <!-- MAKE TIME FOR YOURSELF Section -->
+<section class="time-planner-front">
+    <h2>MAKE TIME FOR YOURSELF</h2>
+    <p>Plan your perfect study schedule with our smart time allocation system</p>
+    
+    <label for="modal-toggle" class="planner-button">
+       
+        <a href="Smart Time Allocation Guide.html" class="planner-button">
+    <span class="icon">⏱️</span>
+    <span>Open Time Planner</span>
+</a>
+    </label>
+</section>
+
+<!-- Hidden checkbox for modal toggle -->
+<input type="checkbox" id="modal-toggle" class="modal-toggle">
         <!-- Subject Previews -->
         <section class="subject-previews">
             <a href="math.html" class="math-preview">
@@ -191,35 +256,64 @@
                 </div>
             </a>
         </section>
+
+
+        <!-- Motivation Trigger -->
+        <section class="motivation-trigger">
+            <label for="motivation-toggle" class="get-set-go">GET SET GO!!!</label>
+            <input type="checkbox" id="motivation-toggle" class="hidden-toggle">
+            
+            <div class="motivation-cards">
+                <div class="tip-card">
+                    <h3>📚 Study Tip #1</h3>
+                    <p>"Start with the hardest task first - your morning energy is precious!"</p>
+                    <div class="break-hint">🕒 Take a 5-min break every 25 mins</div>
+                </div>
+                
+                <div class="tip-card">
+                    <h3>🧠 Motivation #2</h3>
+                    <p>"You don't have to be perfect, just better than yesterday."</p>
+                    <div class="break-hint">💧 Hydrate after every chapter</div>
+                </div>
+                
+                <div class="tip-card">
+                    <h3>⏰ Plan Tip #3</h3>
+                    <p>Divide big topics into 30-min chunks like: 1) Formulas 2) Problems 3) Review</p>
+                    <div class="break-hint">👀 Rest eyes for 1 min every 15 mins</div>
+                </div>
+            </div>
+        </section>
         
         <div class="time-guide-cards">
-    <h3>Time Allocation Guide</h3>
-    <div class="guide-grid">
-        <div class="guide-card time-25">
-            <div class="guide-percent">25%</div>
-            <div class="guide-desc">Basic Concepts</div>
-            <div class="guide-time">30min</div>
-        </div>
-        <div class="guide-card time-50">
-            <div class="guide-percent">50%</div>
-            <div class="guide-desc">Practice Problems</div>
-            <div class="guide-time">1hr</div>
-        </div>
-        <div class="guide-card time-75">
-            <div class="guide-percent">75%</div>
-            <div class="guide-desc">Deep Study</div>
-            <div class="guide-time">1.5hr</div>
-        </div>
-        <div class="guide-card time-100">
-            <div class="guide-percent">100%</div>
-            <div class="guide-desc">Full Mastery</div>
-            <div class="guide-time">2hr+</div>
+            <h3>Time Allocation Guide</h3>
+            <div class="guide-grid">
+                <div class="guide-card time-25">
+                    <div class="guide-percent">25%</div>
+                    <div class="guide-desc">Basic Concepts</div>
+                    <div class="guide-time">30min</div>
+                </div>
+                <div class="guide-card time-50">
+                    <div class="guide-percent">50%</div>
+                    <div class="guide-desc">Practice Problems</div>
+                    <div class="guide-time">1hr</div>
+                </div>
+                <div class="guide-card time-75">
+                    <div class="guide-percent">75%</div>
+                    <div class="guide-desc">Deep Study</div>
+                    <div class="guide-time">1.5hr</div>
+                </div>
+                <div class="guide-card time-100">
+                    <div class="guide-percent">100%</div>
+                    <div class="guide-desc">Full Mastery</div>
+                    <div class="guide-time">2hr+</div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
     
     <footer>
         <p>© 2023 Study Helper | Made with ♥</p>
     </footer>
+    
 </body>
 </html>

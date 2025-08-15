@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Study Helper</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Clock Visualization Styles */
+        .time-visual {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .clock {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #4CAF50 0% var(--percentage), 
+                #f0f0f0 var(--percentage) 100%
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #333;
+            position: relative;
+        }
+        
+        .clock::before {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+        }
+        
+        .clock span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .time-info {
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        /* Time Allocation Rules */
+        .time-25 .clock { --percentage: 25%; }
+        .time-50 .clock { --percentage: 50%; }
+        .time-75 .clock { --percentage: 75%; }
+        .time-100 .clock { --percentage: 100%; }
+        
+        .time-25 .time-info::after { content: "Basic Concepts (30min)"; }
+        .time-50 .time-info::after { content: "Practice Problems (1hr)"; }
+        .time-75 .time-info::after { content: "Deep Study (1.5hr)"; }
+        .time-100 .time-info::after { content: "Full Mastery (2hr+)"; }
+
+        /* New Time Allocation Cards */
+        .time-cards {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .time-card {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            flex: 1;
+        }
+        
+        .time-card h4 {
+            margin: 0 0 5px 0;
+            color: #333;
+        }
+        
+        .time-card p {
+            margin: 0;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        /* MAKE TIME FOR YOURSELF SECTION */
+        .time-planner-front {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .time-planner-front h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .time-planner-front p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .time-planner-link {
+            margin-top: 1.5rem;
+        }
+
+        .planner-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .planner-button:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .planner-button .icon {
+            font-size: 1.2rem;
+        }
+
+        /* Subject Page Enhancements */
+        .chapter {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body class="home">
+    <header>
+        <h1>📚 Study Helper</h1>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="math.html">Math</a>
+            <a href="science.html">Science</a>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <!-- Motivational Quote -->
+        <section class="motivation">
+            <blockquote>
+                "The expert in anything was once a beginner."
+                <cite>- Helen Hayes</cite>
+            </blockquote>
+        </section>
+
+        <!-- Today's Study Plan with Card Format -->
+        <section class="study-tracker">
+            <h2>⏳ Today's Study Plan</h2>
+            
+            <!-- Time Allocation Cards -->
+            <div class="time-cards">
+                <div class="time-card">
+                    <h4>Mathematics</h4>
+                    <p>2 hours</p>
+                </div>
+                <div class="time-card">
+                    <h4>Science</h4>
+                    <p>1 hour</p>
+                </div>
+            </div>
+            
+            <div class="time-visualization">
+                <details class="subject-card time-50">
+                    <summary>
+                        <div class="subject-header">
+                            <h3>Mathematics</h3>
+                            <p>Algebra & Geometry</p>
+                            <div class="time-visual">
+                                <div class="clock"><span>50%</span></div>
+                                <div class="time-info"></div>
+                            </div>
+                        </div>
+                    </summary>
+                    <div class="task-list">
+                        <p>✔ Solve quadratic equations (30 min)</p>
+                        <p>✔ Practice geometry proofs (30 min)</p>
+                        <p>✔ Review trigonometric identities (30 min)</p>
+                        <p>✔ Complete practice test (30 min)</p>
+                    </div>
+                </details>
+                
+                <details class="subject-card time-25">
+                    <summary>
+                        <div class="subject-header">
+                            <h3>Chemistry</h3>
+                            <p>Periodic Table</p>
+                            <div class="time-visual">
+                                <div class="clock"><span>25%</span></div>
+                                <div class="time-info"></div>
+                            </div>
+                        </div>
+                    </summary>
+                    <div class="task-list">
+                        <p>✔ Memorize group 1 elements (15 min)</p>
+                        <p>✔ Review periodic trends (15 min)</p>
+                        <p>✔ Practice electron configurations (15 min)</p>
+                        <p>✔ Draw atomic structures (15 min)</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+      <!-- MAKE TIME FOR YOURSELF Section -->
+<section class="time-planner-front">
+    <h2>MAKE TIME FOR YOURSELF</h2>
+    <p>Plan your perfect study schedule with our smart time allocation system</p>
+    
+    <label for="modal-toggle" class="planner-button">
+       
+        <a href="Smart Time Allocation Guide.html" class="planner-button">
+    <span class="icon">⏱️</span>
+    <span>Open Time Planner</span>
+</a>
+    </label>
+</section>
+
+<!-- Hidden checkbox for modal toggle -->
+<input type="checkbox" id="modal-toggle" class="modal-toggle">
+        <!-- Subject Previews -->
+        <section class="subject-previews">
+            <a href="math.html" class="math-preview">
+                <h3>Math Works</h3>
+                <p>Unlock the secrets of numbers</p>
+                <div class="symbol">∫</div>
+                <div class="preview-content">
+                    <p>Explore algebra, geometry, calculus and more with interactive learning tools</p>
+                </div>
+            </a>
+            
+            <a href="science.html" class="science-preview">
+                <h3>Science Works</h3>
+                <p>Discover how the world works</p>
+                <div class="symbol">⚗️</div>
+                <div class="preview-content">
+                    <p>Dive into physics, chemistry, biology with practical examples and experiments</p>
+                </div>
+            </a>
+        </section>
+
+
+        <!-- Motivation Trigger -->
+        <section class="motivation-trigger">
+            <label for="motivation-toggle" class="get-set-go">GET SET GO!!!</label>
+            <input type="checkbox" id="motivation-toggle" class="hidden-toggle">
+            
+            <div class="motivation-cards">
+                <div class="tip-card">
+                    <h3>📚 Study Tip #1</h3>
+                    <p>"Start with the hardest task first - your morning energy is precious!"</p>
+                    <div class="break-hint">🕒 Take a 5-min break every 25 mins</div>
+                </div>
+                
+                <div class="tip-card">
+                    <h3>🧠 Motivation #2</h3>
+                    <p>"You don't have to be perfect, just better than yesterday."</p>
+                    <div class="break-hint">💧 Hydrate after every chapter</div>
+                </div>
+                
+                <div class="tip-card">
+                    <h3>⏰ Plan Tip #3</h3>
+                    <p>Divide big topics into 30-min chunks like: 1) Formulas 2) Problems 3) Review</p>
+                    <div class="break-hint">👀 Rest eyes for 1 min every 15 mins</div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="time-guide-cards">
+            <h3>Time Allocation Guide</h3>
+            <div class="guide-grid">
+                <div class="guide-card time-25">
+                    <div class="guide-percent">25%</div>
+                    <div class="guide-desc">Basic Concepts</div>
+                    <div class="guide-time">30min</div>
+                </div>
+                <div class="guide-card time-50">
+                    <div class="guide-percent">50%</div>
+                    <div class="guide-desc">Practice Problems</div>
+                    <div class="guide-time">1hr</div>
+                </div>
+                <div class="guide-card time-75">
+                    <div class="guide-percent">75%</div>
+                    <div class="guide-desc">Deep Study</div>
+                    <div class="guide-time">1.5hr</div>
+                </div>
+                <div class="guide-card time-100">
+                    <div class="guide-percent">100%</div>
+                    <div class="guide-desc">Full Mastery</div>
+                    <div class="guide-time">2hr+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2023 Study Helper | Made with ♥</p>
+    </footer>
+    
+</body>
+</html>
